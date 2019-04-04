@@ -5,7 +5,7 @@ package com.gupao.student.delegate.simple;
  * User: zhuochen
  * Date: 2019/3/14
  * Time: 22:12
- * Description:
+ * Description: 测试委派着模式
  */
 public class DetegateTest {
 

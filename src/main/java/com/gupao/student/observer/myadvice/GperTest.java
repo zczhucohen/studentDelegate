@@ -9,7 +9,7 @@ package com.gupao.student.observer.myadvice;
  */
 public class GperTest {
     public static void main(String[] args) {
-        Gper gperInstance = Gper.getGperInstance();
+       /* Gper gperInstance = Gper.getGperInstance();
         Teacher tom = new Teacher("tom");
         Teacher mic = new Teacher("mic");
 
@@ -19,6 +19,7 @@ public class GperTest {
         question.setContent("我不是很明白观察者设计者模式，请详细解释下？");
         gperInstance.addObserver(tom);
         gperInstance.addObserver(mic);
-        gperInstance.publicQuestion(question);
+        gperInstance.publicQuestion(question);*/
+
     }
 }

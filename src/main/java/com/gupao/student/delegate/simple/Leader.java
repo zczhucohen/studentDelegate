@@ -8,7 +8,7 @@ import java.util.Map;
  * User: zhuochen
  * Date: 2019/3/14
  * Time: 21:55
- * Description:
+ * Description: 委派模式 - 老板不直接与员工接触，是经理分发给个员工下的任务。
  */
 public class Leader {
 
