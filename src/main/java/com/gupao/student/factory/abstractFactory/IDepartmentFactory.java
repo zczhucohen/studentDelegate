@@ -7,8 +7,8 @@ package com.gupao.student.factory.abstractFactory;
  * @date 2019/4/16
  */
 public interface IDepartmentFactory {
+    // 创建一个产品族
+    public FunctionInfo createFunctionInfo();
 
-    public void createSearch();
-
-    public void createSell();
+    public PerformanceInfo createPerformance();
 }
