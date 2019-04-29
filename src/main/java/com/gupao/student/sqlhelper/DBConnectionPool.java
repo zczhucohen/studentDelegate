@@ -3,6 +3,7 @@ package com.gupao.student.sqlhelper;
  * Created by zhuochen on 2019/4/26.
  */
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -100,7 +101,12 @@ public class DBConnectionPool extends Pool{
      *
      */
     private void init()throws IOException {
-        InputStream is = DBConnectionPool.class.getResourceAsStream(propertiesName);
+        String url = Thread.currentThread().getContextClassLoader().getResource(propertiesName).getFile();
+
+        // 获取配置文件流
+        // InputStream is = Pool.class.getResourceAsStream(propertiesName);
+        InputStream is = new FileInputStream(url);
+        // InputStream is = DBConnectionPool.class.getResourceAsStream(propertiesName);
         Properties p = new Properties();
         p.load(is);
         this.userName = p.getProperty("userName");
@@ -119,7 +125,7 @@ public class DBConnectionPool extends Pool{
      * @param conn
      */
     @Override
-    public void freeConnection(Connection conn) {
+    public synchronized void freeConnection(Connection conn) {
         freeConnections.add(conn);
         num++;
         checkedOut--;

@@ -3,6 +3,7 @@ package com.gupao.student.sqlhelper;
  * Created by zhuochen on 2019/4/23.
  */
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -22,7 +23,7 @@ import java.util.Properties;
  * @date 2019/4/23
  */
 public abstract class Pool {
-    // 配置文件名
+    // 配置文件名 com/gupao/student/sqlhelper/connection-INF.properties
     public String propertiesName = "connection-INF.properties";
 
     private static Pool instance = null; // 定义唯一实例
@@ -65,8 +66,11 @@ public abstract class Pool {
      * 初始化所有从配置文件种读取的成员变量
      */
     private void init() throws IOException {
+        String url = Thread.currentThread().getContextClassLoader().getResource(propertiesName).getFile();
+
         // 获取配置文件流
-        InputStream is = Pool.class.getResourceAsStream(propertiesName);
+        // InputStream is = Pool.class.getResourceAsStream(propertiesName);
+        InputStream is = new FileInputStream(url);
         Properties properties = new Properties();
         // 读取配置文件
         properties.load(is);
@@ -77,7 +81,7 @@ public abstract class Pool {
     }
 
     /**
-     * 装载和注册所有JDBC驱动程序
+     * 装载和注册所有JDBC驱动程序 connection-INF.properties
      * @param driverName 接受驱动字符串
      */
     protected void loadDrivers(String driverName) {
