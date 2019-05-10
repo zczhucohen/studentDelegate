@@ -1,4 +1,4 @@
-package com.gupao.studente.test;/**
+package com.gupao.studente.test.singleton;/**
  * Created by zhuochen on 2019/5/8.
  */
 

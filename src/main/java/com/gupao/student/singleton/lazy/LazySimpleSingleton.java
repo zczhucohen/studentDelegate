@@ -17,7 +17,7 @@ public class LazySimpleSingleton {
     private LazySimpleSingleton() {
     }
     // 暂未加锁，线程不安全
-    public static LazySimpleSingleton getInstance(){
+    public synchronized static LazySimpleSingleton getInstance(){
         if(lazy == null){
             lazy = new LazySimpleSingleton();
         }
