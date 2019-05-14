@@ -19,7 +19,6 @@ public class ContainerSingleton {
         synchronized (ioc){
             if(!ioc.containsKey(className)){
                 Object obj = null;
-
                 try {
                     obj = Class.forName(className).newInstance();
                     ioc.put(className,obj);
@@ -31,9 +30,9 @@ public class ContainerSingleton {
                     e.printStackTrace();
                 }
                 return obj;
+            }else{
+                return ioc.get(className);
             }
-
         }
-        return null;
     }
 }

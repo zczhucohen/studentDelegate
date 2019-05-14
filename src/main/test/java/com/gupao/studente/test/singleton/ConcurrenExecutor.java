@@ -18,11 +18,13 @@ public class ConcurrenExecutor {
     /**
      *
      * @param runHander
-     * @param executeCount
-     * @param concurrenCount
+     * @param executeCount 发起请求总数
+     * @param concurrenCount 同时并发执行的线程数
      * @throws InterruptedException
      */
     public static void execute(final RunHander runHander, int executeCount, final int concurrenCount) throws InterruptedException {
+        long start = System.currentTimeMillis();
+        System.out.println("开始线程时间："+start+"ms");
         ExecutorService executorService = Executors.newCachedThreadPool();
         // 控制信好量，此处用于控制并发的线程数
         final Semaphore semaphore = new Semaphore(concurrenCount);
@@ -46,8 +48,14 @@ public class ConcurrenExecutor {
                  }
              });
          }
+        long endNew = System.currentTimeMillis();
+        System.out.println("创建结束："+endNew+"ms");
         countDownLatch.await();// 线程阻塞，直到闭锁值为0时，阻塞才释放，继续往下执行
+        long end = System.currentTimeMillis();
+        System.out.println("await："+end+"ms");
         executorService.shutdown();
+        long end1 = System.currentTimeMillis();
+        System.out.println("shutdown："+end1+"ms");
 
     }
 
