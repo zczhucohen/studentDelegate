@@ -2,13 +2,15 @@ package com.gupao.student.singleton.seriable;/**
  * Created by zhuochen on 2019/5/14.
  */
 
+import java.io.Serializable;
+
 /**
  * 反序列化时导致单例破坏
  * @author zhuochen
  * @comment
  * @date 2019/5/14
  */
-public class SeriableSingleton {
+public class SeriableSingleton implements Serializable{
 
     // 序列化就是说把内存的状态通过转换成字节码的形式
     // 从而转换一个IO流，写入到其他地方（可以是磁盘，网络IO）
@@ -24,4 +26,8 @@ public class SeriableSingleton {
     private SeriableSingleton(){}
 
     public static SeriableSingleton getInstance(){return INSTANCE;}
+
+    private Object readResolve(){
+        return INSTANCE;
+    }
 }
