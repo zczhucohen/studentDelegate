@@ -14,7 +14,7 @@ public class DeepCloneTest {
 
         QiTianDaSheng clone = (QiTianDaSheng) qiTianDaSheng.clone();
         System.out.println("深克隆："+ (qiTianDaSheng.jinGuBang == clone.jinGuBang));
-
+        // 深浅克隆的比较
         QiTianDaSheng qiTianDaSheng1 = new QiTianDaSheng();
         QiTianDaSheng shallowClone = qiTianDaSheng1.shallowClone(qiTianDaSheng1);
         System.out.println("浅克隆："+ (qiTianDaSheng1.jinGuBang == shallowClone.jinGuBang));
