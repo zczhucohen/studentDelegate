@@ -21,7 +21,7 @@ public class SocketServerSingle {
         Socket socket = null;
         try {
             // 创建一个ServerSocket在端口8080监听客户要求
-            server = new ServerSocket(8080);
+            server = new ServerSocket(8880);
             /*
             使用accept（）阻塞等待客户请求，有客户
             请求到来则产生一个Socket对象，并继续执行
@@ -46,7 +46,7 @@ public class SocketServerSingle {
             // 如果该字符串为 bye，则停止循环
             while (!line.equals("bye")){
                 // 想客户端输出该字符串
-                os.print(line);
+                os.println(line);
                // 刷新输出流，是客户端马上就能受到该字符串
                 os.flush();
                 // 在系统标准输出上打印读入的字符串
